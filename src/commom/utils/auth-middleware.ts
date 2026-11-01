@@ -2,10 +2,10 @@
 // if token doesn't exist then move next
 // if exists then verify the token and attach the user to the request object
 
-import { Request, Response, NextFunction } from "express";
+import { Request, Response, NextFunction } from 'express';
 type tokenType = string | undefined;
-import { verifyAccessToken } from "./token.js";
-import { ApiError } from "./api-Error.js";
+import { verifyAccessToken } from './token.js';
+import { ApiError } from './api-Error.js';
 
 export function authenticationMiddleware() {
   return function (req: Request, res: Response, next: NextFunction) {
@@ -14,8 +14,8 @@ export function authenticationMiddleware() {
       return next();
     }
     const user = verifyAccessToken(token);
-    if (!user) throw ApiError.badRequest("Provide valid token..");
-    //@ts-ignore
+    if (!user) throw ApiError.badRequest('Provide valid token..');
+    // @ts-expect-error Express Request does not know about user
     req.user = user;
     next();
   };
@@ -26,8 +26,8 @@ export function authenticationMiddleware() {
 
 export function restrictToAuthenticatedUser() {
   return function (req: Request, res: Response, next: NextFunction) {
-    //@ts-ignore
-    if (!req.user) throw ApiError.unauthorized("Authentication required..");
+    // @ts-expect-error Express Request does not know about user
+    if (!req.user) throw ApiError.unauthorized('Authentication required..');
     next();
   };
 }

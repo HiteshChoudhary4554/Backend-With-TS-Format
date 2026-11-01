@@ -1,4 +1,4 @@
-import type { Response } from "express";
+import type { Response } from 'express';
 type msg = string;
 type payloadType = object;
 
@@ -11,11 +11,7 @@ export class ApiResponse {
     });
   }
 
-  static created(
-    res: Response,
-    message: msg,
-    payload: payloadType = {},
-  ): Response {
+  static created(res: Response, message: msg, payload: payloadType = {}): Response {
     return res.status(201).json({
       success: true,
       message,

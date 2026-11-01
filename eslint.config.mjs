@@ -5,13 +5,7 @@ import prettierConfig from 'eslint-config-prettier';
 
 export default defineConfig([
   {
-    ignores: [
-      'node_modules/**',
-      'dist/**',
-      'coverage/**',
-      '.env',
-      '.env.*',
-    ],
+    ignores: ['node_modules/**', 'dist/**', 'coverage/**', '.env', '.env.*'],
   },
 
   {

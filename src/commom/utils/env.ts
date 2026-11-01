@@ -1,20 +1,20 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 const envSchema = z.object({
-  PORT: z.string().optional().default("8080"),
+  PORT: z.string().optional().default('8080'),
   JWT_ACCESS_SECRET: z.string().min(22),
 
   JWT_ACCESS_EXPIRES_IN: z
     .string()
     .regex(/^\d+(s|m|h|d)$/)
-    .default("15m"),
+    .default('15m'),
 
   JWT_REFRESH_SECRET: z.string().min(22),
 
   JWT_REFRESH_EXPIRES_IN: z
     .string()
     .regex(/^\d+(s|m|h|d)$/)
-    .default("24h"),
+    .default('24h'),
 });
 
 function createEnv(env: NodeJS.ProcessEnv) {

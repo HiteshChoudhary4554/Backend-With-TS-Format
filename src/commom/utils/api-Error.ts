@@ -12,23 +12,23 @@ export class ApiError extends Error {
     Error.captureStackTrace(this, this.constructor);
   }
 
-  static badRequest(msg: msg = "Bad request") {
+  static badRequest(msg: msg = 'Bad request') {
     return new ApiError(400, msg);
   }
 
-  static unauthorized(msg: msg = "Unauthorized") {
+  static unauthorized(msg: msg = 'Unauthorized') {
     return new ApiError(401, msg);
   }
 
-  static conflict(msg: msg = "Conflict") {
+  static conflict(msg: msg = 'Conflict') {
     return new ApiError(409, msg);
   }
 
-  static forbidden(msg: msg = "forbidden") {
+  static forbidden(msg: msg = 'forbidden') {
     return new ApiError(412, msg);
   }
 
-  static notfound(message: msg = "notfound") {
+  static notfound(message: msg = 'notfound') {
     return new ApiError(412, message);
   }
 }
